@@ -2,6 +2,8 @@
 
 Executada em 25 de outubro de 2026, no Windows com Node.js 24.15.0.
 
+Após a separação em `front/` e `back/`, a instalação e os comandos `npm run build`, `npm run lint` e `npm test` foram executados novamente pela raiz com sucesso. Os 12 testes continuam aprovados. `npm run dev` iniciou o frontend pelo workspace; a página, a entrada React e a logo retornaram HTTP 200. A configuração da Vercel foi ajustada para publicar `front/dist`.
+
 ## Verificado
 
 - `npm install`: instalação concluída; auditoria do npm sem vulnerabilidades no momento da instalação.
@@ -13,7 +15,7 @@ Executada em 25 de outubro de 2026, no Windows com Node.js 24.15.0.
   - FAQ altera estado acessível e exibe a resposta correspondente.
   - Quatro cenários da lógica educativa: flexibilidade, uso externo, resistência e iniciante.
   - SEO com domínio válido e prévia sem domínio.
-- `npm run build`: TypeScript estrito e build Vite aprovados; saída em `dist/`.
+- `npm run build`: TypeScript estrito e build Vite aprovados; saída em `front/dist/`.
 - `git diff --check`: aprovado.
 - Servidor Vite inicializou; GET da página, entrada React transformada e imagem hero retornaram HTTP 200.
 - Imagens geradas inspecionadas e otimizadas: hero inicial 127.296 bytes, composição de objetos 92.280 bytes, detalhe 30.718 bytes. A variante dourada usada após a atualização da identidade visual também foi inspecionada antes da conversão em WebP.

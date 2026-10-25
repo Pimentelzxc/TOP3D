@@ -8,14 +8,14 @@ Adicionadas a pedido do usuário. Crédito: **Prusa Research**. Uso como exemplo
 
 | Material | Arquivo local | Conteúdo e fonte | Imagem original |
 | --- | --- | --- | --- |
-| PLA | `public/images/material-pla.webp` | Vasos e objetos decorativos — [guia PLA](https://help.prusa3d.com/article/pla_2062) | [JPG](https://help.prusa3d.com/wp-content/uploads/prusament-pla-pearl-mouse-1kg.jpg) |
-| PETG | `public/images/material-petg.webp` | Grampos e suportes — [guia PETG](https://help.prusa3d.com/article/petg_2059) | [JPG](https://help.prusa3d.com/wp-content/uploads/prusament-petg-prusa-orange-1kg-3.jpg) |
-| ABS | `public/images/material-abs.webp` | Modelos de sapos com acabamento alisado — [guia ABS](https://help.prusa3d.com/article/abs_2058) | [JPG](https://help.prusa3d.com/wp-content/uploads/bf037464331666f0.jpg) |
-| TPU | `public/images/material-tpu.webp` | Pneus para modelos RC — [artigo TPU 95A](https://blog.prusa3d.com/prusament-tpu-95a-now-thats-a-flex_115316/) | [JPG](https://storage.googleapis.com/prusa3d-content-prod-14e8-wordpress-blog-prod/2025/05/25f3252a-dsc07256-1024x684.jpg) |
+| PLA | `front/public/images/material-pla.webp` | Vasos e objetos decorativos — [guia PLA](https://help.prusa3d.com/article/pla_2062) | [JPG](https://help.prusa3d.com/wp-content/uploads/prusament-pla-pearl-mouse-1kg.jpg) |
+| PETG | `front/public/images/material-petg.webp` | Grampos e suportes — [guia PETG](https://help.prusa3d.com/article/petg_2059) | [JPG](https://help.prusa3d.com/wp-content/uploads/prusament-petg-prusa-orange-1kg-3.jpg) |
+| ABS | `front/public/images/material-abs.webp` | Modelos de sapos com acabamento alisado — [guia ABS](https://help.prusa3d.com/article/abs_2058) | [JPG](https://help.prusa3d.com/wp-content/uploads/bf037464331666f0.jpg) |
+| TPU | `front/public/images/material-tpu.webp` | Pneus para modelos RC — [artigo TPU 95A](https://blog.prusa3d.com/prusament-tpu-95a-now-thats-a-flex_115316/) | [JPG](https://storage.googleapis.com/prusa3d-content-prod-14e8-wordpress-blog-prod/2025/05/25f3252a-dsc07256-1024x684.jpg) |
 
 ## Hero
 
-Arquivo: `public/images/hero-spools.webp`. Convertido para WebP, 1100 × 1100.
+Arquivo: `front/public/images/hero-spools.webp`. Convertido para WebP, 1100 × 1100.
 
 Prompt final:
 
@@ -23,7 +23,7 @@ Prompt final:
 
 ## Variante dourada do hero
 
-Arquivo utilizado na interface: `public/images/hero-spools-gold.webp`, 1100 × 1100. Editado com Imagegen integrado a partir de `hero-spools.webp`; o arquivo anterior foi preservado. Apenas a composição ilustrativa foi adaptada, não a logo ou as fotos reais dos materiais.
+Arquivo utilizado na interface: `front/public/images/hero-spools-gold.webp`, 1100 × 1100. Editado com Imagegen integrado a partir de `hero-spools.webp`; o arquivo anterior foi preservado. Apenas a composição ilustrativa foi adaptada, não a logo ou as fotos reais dos materiais.
 
 Prompt final de edição:
 
@@ -31,7 +31,7 @@ Prompt final de edição:
 
 ## Galeria (composição original)
 
-Arquivos: `public/images/creative-objects.webp`, `public/images/detail-objects.webp` (recorte derivado).
+Arquivos: `front/public/images/creative-objects.webp`, `front/public/images/detail-objects.webp` (recorte derivado).
 
 Prompt final:
 
@@ -39,7 +39,7 @@ Prompt final:
 
 ## Outros elementos
 
-- Logo original: `public/images/top3d-logo.webp`, obtida da metatag pública `og:image` do [Instagram @top3dd](https://www.instagram.com/top3dd/). Arquivo disponível em 100 × 100 px, mantido nessa resolução, sem redesenho por IA. `public/favicon.png` é uma redução a 48 × 48 px da mesma imagem. Direitos da marca pertencem à TOP3D.
+- Logo original: `front/public/images/top3d-logo.webp`, obtida da metatag pública `og:image` do [Instagram @top3dd](https://www.instagram.com/top3dd/). Arquivo disponível em 100 × 100 px, mantido nessa resolução, sem redesenho por IA. `front/public/favicon.png` é uma redução a 48 × 48 px da mesma imagem. Direitos da marca pertencem à TOP3D.
 - Paleta da interface: preto quente `#11100E`, dourado `#E2B12B`, creme `#F9E7CE`. Aproximações visuais da foto do perfil, não códigos de um manual oficial. Manrope complementa a logo na navegação.
 - Camadas da seção institucional: elementos CSS, código local editável. As geometrias dos cards de materiais foram substituídas pelas fotografias reais acima.
 - Ícones: Lucide React, licença ISC. Símbolo do WhatsApp: SVG local obtido de [Simple Icons](https://github.com/simple-icons/simple-icons/blob/develop/icons/whatsapp.svg), projeto CC0; marca pertencente ao respectivo titular.

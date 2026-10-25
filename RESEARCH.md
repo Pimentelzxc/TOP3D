@@ -14,7 +14,7 @@ Também solicitou substituir as geometrias dos cards de materiais por fotos reai
 
 Após a solicitação do usuário para seguir o Instagram, uma consulta HTTP direta à página pública `https://www.instagram.com/top3dd/` retornou 200 e permitiu ler as metatags públicas. A ferramenta de busca web continuou bloqueada por throttling, mas o HTML público trouxe título, bio e a foto de perfil em `og:image`. Não foram usados login, APIs privadas ou scraping contínuo.
 
-A imagem confirma visualmente a marca TOP 3D Filamentos, com **preto, dourado e bege/creme**. A cópia pública de 100 × 100 px foi salva em `public/images/top3d-logo.webp` sem redesenho, remoção de fundo ou aumento artificial de resolução; o favicon PNG deriva dessa imagem. A interface usa aproximações visuais **#11100E**, **#E2B12B** e **#F9E7CE**. Não são valores declarados em um manual oficial de marca.
+A imagem confirma visualmente a marca TOP 3D Filamentos, com **preto, dourado e bege/creme**. A cópia pública de 100 × 100 px foi salva em `front/public/images/top3d-logo.webp` sem redesenho, remoção de fundo ou aumento artificial de resolução; o favicon PNG deriva dessa imagem. A interface usa aproximações visuais **#11100E**, **#E2B12B** e **#F9E7CE**. Não são valores declarados em um manual oficial de marca.
 
 A bio pública também informa venda de PLA, PETG e TPU e o mesmo WhatsApp fornecido pelo usuário. Não foram extraídos SKUs, marcas, fotos de produtos ou preços para o catálogo. A tabela abaixo registra os resultados da pesquisa inicial.
 
@@ -38,9 +38,9 @@ A bio pública também informa venda de PLA, PETG e TPU e o mesmo WhatsApp forne
 
 Não foram localizadas fotografias oficiais com autorização verificável. Foram geradas duas composições originais com a ferramenta integrada Imagegen, sem marcas de terceiros. São identificadas na página como **conceituais/ilustrativas** e não afirmam estoque, autoria de projetos ou produtos reais da empresa. Assets persistidos localmente e otimizados em WebP:
 
-- `public/images/hero-spools-gold.webp`: bobinas dourada, creme e preta; hero, galeria e contato. Variante da composição inicial, adaptada à paleta da marca; original ciano preservado em `hero-spools.webp`.
-- `public/images/creative-objects.webp`: vasos e objetos conceituais; galeria.
-- `public/images/detail-objects.webp`: detalhe derivado da composição de objetos.
+- `front/public/images/hero-spools-gold.webp`: bobinas dourada, creme e preta; hero, galeria e contato. Variante da composição inicial, adaptada à paleta da marca; original ciano preservado em `hero-spools.webp`.
+- `front/public/images/creative-objects.webp`: vasos e objetos conceituais; galeria.
+- `front/public/images/detail-objects.webp`: detalhe derivado da composição de objetos.
 
 Prompts completos de geração: [ASSETS.md](ASSETS.md). Nenhuma imagem depende de URL temporária, scraping ou API privada.
 
