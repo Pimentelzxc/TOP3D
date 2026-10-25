@@ -2,6 +2,22 @@
 
 Consulta: **25 de outubro de 2026**. Briefing recebido como arquivo de texto; não havia código nem imagens da empresa no repositório.
 
+## Marcas e catálogo administrável
+
+O responsável confirmou que a TOP3D trabalha com **Multfila, 3D Brothers, Voolt3D, 3D Prime e ELEGOO**. Essa lista foi usada na nova seção Marcas e no painel de cadastro; não se afirmou que a loja é distribuidora oficial ou que um SKU específico está em estoque.
+
+Fontes consultadas para os textos básicos:
+
+- Multfila: https://multfila.com.br/ — portfólio PLA/PETG/TPU/ABS e acabamentos Silk, Matte e Multicolor. A loja oficial estava em manutenção; a foto do exemplo veio da página pública da Artbox3D, creditada separadamente.
+- 3D Brothers: https://3dbrothers.com.br/sobre/ — fabricação brasileira em Curitiba, com PLA/PETG/ABS. Foto e logo da própria loja.
+- Voolt3D: https://voolt3d.com.br/ — linhas PLA Velvet, V-Silk e PETG HF. Foto do PLA Dourado V-Silk e logo da loja oficial.
+- 3D Prime: https://3dprime.com.br/ — linhas PLA Basic e PLA Premium HT High Speed. Foto do PLA Basic Branco e logo oficiais.
+- ELEGOO: https://us.elegoo.com/pages/elegoo-filaments e https://us.elegoo.com/collections/filaments — materiais PLA/PETG, acabamentos Silk e opções TPU. Foto e logo oficiais.
+
+Fotos e logos foram salvos em `front/public/images/brands/`; as fontes estão em `ASSETS.md`. Não foram copiados preços, promoções, avaliações ou condições comerciais dos fabricantes para o catálogo da TOP3D. O cadastro real passa a ser feito pela administradora no Supabase.
+
+O usuário forneceu a URL e a chave publicável do projeto Supabase e indicou **top3d2k26@gmail.com** para administração. A conexão pública foi testada; na primeira consulta a tabela da TOP3D ainda não existia (PGRST205). As migrações foram preparadas para execução no SQL Editor. Nenhuma chave secreta foi incorporada ao código.
+
 ## Atualização fornecida pelo responsável
 
 O usuário informou o WhatsApp **(41) 99776-5420** e solicitou seu uso em todos os contatos. Número configurado como **5541997765420**, incluindo o código do Brasil. A fonte dessa informação é a instrução direta do usuário; o número não foi inferido das buscas.

@@ -14,6 +14,10 @@ export interface Product {
   available?: boolean;
   verified: boolean;
   sourceUrl: string;
+  published?: boolean;
+  imagePath?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 export interface Material {
   id: string;

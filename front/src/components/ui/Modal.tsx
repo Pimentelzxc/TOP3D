@@ -29,7 +29,10 @@ export function Modal({
       ref={ref}
       className={`modal ${wide ? "modal-wide" : ""}`}
       aria-labelledby="modal-title"
-      onCancel={onClose}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           const r = e.currentTarget.getBoundingClientRect();

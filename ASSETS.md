@@ -1,5 +1,19 @@
 # Assets visuais
 
+## Marcas comercializadas
+
+Lista confirmada pelo responsável: Multfila, 3D Brothers, Voolt3D, 3D Prime e ELEGOO. Os cinco logos e cinco fotos estão em `front/public/images/brands/`, em WebP local. Foram apenas redimensionados/comprimidos, sem redesenho por IA ou remoção de marcas. São referências das marcas, sem importar preços, promoções ou afirmar disponibilidade de SKUs na TOP3D. Marcas e fotografias pertencem aos seus titulares.
+
+| Marca | Arquivos locais (prefixo) | Fontes |
+| --- | --- | --- |
+| Multfila | `multfila-logo.webp`, `multfila-photo.webp` | [Logo da loja oficial](https://shop.multfila.com.br/), [foto de PLA Silk Ouro publicada pela Artbox3D](https://maker.artbox3d.com.br/filamentos/multfila/) |
+| 3D Brothers | `brothers-logo.webp`, `brothers-photo.webp` | [Loja oficial](https://3dbrothers.com.br/), [PLA Premium Preto](https://3dbrothers.com.br/produtos/filamento-3d-pla-premium-175-mm-preto-n7thj/) |
+| Voolt3D | `voolt-logo.webp`, `voolt-photo.webp` | [Loja oficial](https://voolt3d.com.br/), [PLA Dourado V-Silk](https://voolt3d.com.br/produtos/filamento-pla-dourado-v-silk-premium/) |
+| 3D Prime | `prime-logo.webp`, `prime-photo.webp` | [Site oficial: logo e PLA Basic Branco](https://3dprime.com.br/) |
+| ELEGOO | `elegoo-logo.webp`, `elegoo-photo.webp` | [Coleção oficial: logo e Silk PLA azul/violeta](https://us.elegoo.com/collections/filaments) |
+
+As fontes das fotos e dos textos básicos também são acessíveis na seção de marcas do site. Não foi atribuída uma licença aberta a materiais sem comprovação. O vínculo de revenda das cinco marcas foi informado pela TOP3D, não inferido das fotografias.
+
 Composições conceituais: **Imagegen integrado**, modo padrão, geração original sem referências de terceiros. Imagens identificadas como ilustrativas na interface. Não são fotos reais da TOP3D.
 
 ## Fotografias reais dos materiais

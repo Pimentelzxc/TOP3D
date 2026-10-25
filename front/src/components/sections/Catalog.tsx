@@ -11,13 +11,23 @@ import {
   X,
 } from "lucide-react";
 import type { Product } from "../../types";
-import { products } from "../../data/products";
+import { useCatalog } from "../../hooks/useCatalog";
+import { brandNames } from "../../data/brands";
 import { ContactButton, SectionHeading, Reveal } from "../ui/Primitives";
 import { Modal } from "../ui/Modal";
-export default function Catalog() {
+export default function Catalog({
+  brandFilter,
+  onBrandFilterChange,
+}: {
+  brandFilter?: string;
+  onBrandFilterChange?: (brand: string) => void;
+} = {}) {
+  const { products, loading, error, refresh } = useCatalog();
+  const [localBrand, setLocalBrand] = useState("Todas");
+  const brand = brandFilter ?? localBrand;
+  const setBrand = onBrandFilterChange ?? setLocalBrand;
   const [query, setQuery] = useState(""),
     [material, setMaterial] = useState("Todos"),
-    [brand, setBrand] = useState("Todas"),
     [color, setColor] = useState("Todas"),
     [sort, setSort] = useState("default"),
     [filters, setFilters] = useState(false);
@@ -25,8 +35,8 @@ export default function Catalog() {
     [shareStatus, setShareStatus] = useState("");
   const track = useRef<HTMLDivElement>(null);
   const confirmed = useMemo(
-    () => products.filter((p) => p.verified && p.sourceUrl),
-    [],
+    () => products.filter((p) => p.verified && p.published !== false),
+    [products],
   );
   const categories = ["Todos", ...new Set(confirmed.map((p) => p.category))];
   const result = useMemo(() => {
@@ -46,7 +56,7 @@ export default function Catalog() {
     return items;
   }, [query, material, brand, color, sort, confirmed]);
   async function share(p: Product) {
-    const url = p.productUrl || `${location.origin}/#produtos`;
+    const url = p.productUrl || `${location.origin}/#catalogo`;
     try {
       if (navigator.share) {
         await navigator.share({ title: p.name, text: p.description, url });
@@ -63,12 +73,12 @@ export default function Catalog() {
     }
   }
   return (
-    <section id="produtos" className="catalog-section section">
+    <section id="catalogo" className="catalog-section section">
       <div className="container">
         <Reveal>
           <div className="section-row">
             <SectionHeading
-              eyebrow="SEU PRÓXIMO PROJETO COMEÇA AQUI"
+              eyebrow="CATÁLOGO TOP3D · SUA PRÓXIMA CRIAÇÃO"
               title={
                 <>
                   O filamento certo.
@@ -134,7 +144,10 @@ export default function Catalog() {
                 >
                   <option>Todas</option>
                   {[
-                    ...new Set(confirmed.map((p) => p.brand).filter(Boolean)),
+                    ...new Set([
+                      ...brandNames,
+                      ...confirmed.map((p) => p.brand).filter(Boolean),
+                    ]),
                   ].map((v) => (
                     <option key={v}>{v}</option>
                   ))}
@@ -174,6 +187,36 @@ export default function Catalog() {
               >
                 Limpar filtros
                 <X size={15} />
+              </button>
+            </div>
+          )}
+          {brand !== "Todas" && (
+            <div className="catalog-brand-filter">
+              <span>
+                Marca selecionada: <strong>{brand}</strong>
+              </span>
+              <button className="text-link" onClick={() => setBrand("Todas")}>
+                Ver todas as marcas
+                <X size={14} />
+              </button>
+            </div>
+          )}
+          {loading && (
+            <div
+              className="catalog-skeletons"
+              aria-label="Carregando catálogo"
+              role="status"
+            >
+              {[1, 2, 3, 4].map((value) => (
+                <div key={value} />
+              ))}
+            </div>
+          )}
+          {error && (
+            <div className="catalog-error" role="alert">
+              <p>{error}</p>
+              <button className="button button-outline" onClick={refresh}>
+                Tentar novamente
               </button>
             </div>
           )}
@@ -223,7 +266,7 @@ export default function Catalog() {
               </article>
             ))}
           </div>
-          {result.length === 0 && (
+          {!loading && !error && result.length === 0 && (
             <div className="catalog-empty" role="status">
               <div className="empty-symbol">
                 <PackageSearch size={35} strokeWidth={1.3} />

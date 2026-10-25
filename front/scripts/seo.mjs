@@ -35,7 +35,7 @@ if (raw) {
   );
   await writeFile(
     "dist/robots.txt",
-    `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`,
+    `User-agent: *\nAllow: /\nDisallow: /admin\nSitemap: ${origin}/sitemap.xml\n`,
   );
 } else {
   console.info(

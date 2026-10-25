@@ -21,8 +21,8 @@ export default function Contact() {
             Dê o próximo passo com a TOP3D.
           </p>
           <div className="hero-actions">
-            <a href="#produtos" className="button button-primary">
-              Explorar produtos
+            <a href="#catalogo" className="button button-primary">
+              Explorar catálogo
               <ArrowUpRight size={17} />
             </a>
             <ContactButton className="button-outline" intent="contact">

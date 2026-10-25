@@ -44,7 +44,7 @@ export default function Hero() {
           </Reveal>
           <Reveal delay={0.22}>
             <div className="hero-actions">
-              <a className="button button-primary" href="#produtos">
+              <a className="button button-primary" href="#catalogo">
                 Explorar filamentos
                 <ArrowUpRightIcon />
               </a>

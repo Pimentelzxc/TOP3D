@@ -5,8 +5,9 @@ import { ContactButton, ExternalLink, Logo } from "../ui/Primitives";
 import { company } from "../../data/company";
 const links = [
   ["inicio", "Início"],
-  ["produtos", "Produtos"],
+  ["catalogo", "Catálogo"],
   ["categorias", "Materiais"],
+  ["marcas", "Marcas"],
   ["sobre", "Sobre nós"],
   ["duvidas", "FAQ"],
   ["contato", "Contato"],

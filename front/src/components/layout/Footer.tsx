@@ -22,7 +22,9 @@ export default function Footer() {
           <div>
             <h3>Explore</h3>
             <a href="#inicio">Início</a>
-            <a href="#produtos">Produtos</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#marcas">Nossas marcas</a>
+            <a href="/admin">Área administrativa</a>
             <a href="#sobre">Sobre a TOP3D</a>
           </div>
           <div>

@@ -54,6 +54,7 @@ export function ContactButton({
   intent,
   material,
   answers,
+  brand,
 }: {
   children?: ReactNode;
   className?: string;
@@ -61,10 +62,17 @@ export function ContactButton({
   intent?: ContactIntent;
   material?: string;
   answers?: Record<string, string>;
+  brand?: string;
 }) {
   return (
     <ExternalLink
-      href={contactUrl({ intent, productName: product, material, answers })}
+      href={contactUrl({
+        intent,
+        productName: product,
+        material,
+        answers,
+        brand,
+      })}
       className={`button ${className}`}
     >
       <MessageCircle size={17} />

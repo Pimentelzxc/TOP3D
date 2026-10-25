@@ -36,6 +36,8 @@ export const contactMessages = {
     "Olá! Consultei o guia de materiais no site da TOP3D e gostaria de orientação para escolher meu filamento.",
   project:
     "Olá! Fiz o assistente de materiais no site da TOP3D e gostaria de conversar sobre meu projeto.",
+  brand:
+    "Olá! Conheci as marcas no site da TOP3D e gostaria de consultar os filamentos disponíveis.",
 };
 export type ContactIntent = keyof typeof contactMessages;
 interface ContactOptions {
@@ -43,16 +45,20 @@ interface ContactOptions {
   productName?: string;
   material?: string;
   answers?: Record<string, string>;
+  brand?: string;
 }
 export function contactUrl({
   intent = "specialist",
   productName,
   material,
   answers,
+  brand,
 }: ContactOptions = {}) {
   let message = productName
     ? `Olá! Vim pelo site da TOP3D e gostaria de consultar a disponibilidade, as cores e o valor do filamento ${productName}.`
     : contactMessages[intent];
+  if (brand)
+    message += ` Tenho interesse na marca ${brand}. Podem me informar materiais, cores e valores?`;
   if (material)
     message +=
       intent === "project"

@@ -1,5 +1,17 @@
 # Validação
 
+## Catálogo administrável e marcas
+
+- `npm test`: **26 testes aprovados**. `npm run lint` e `npm run build`: aprovados.
+- Catálogo renomeado na navegação e nos CTAs, com compatibilidade para o antigo hash `#produtos`.
+- Cinco abas de marcas, dez imagens locais em WebP (372.184 bytes no total), textos com fontes e filtro por marca integrado ao catálogo.
+- Configuração pública local do Supabase validada por HTTP; tabela `top3d_catalog_products` ainda retornou **PGRST205/404** na última consulta. As migrações remotas e o login real dependem da execução dos scripts no SQL Editor e da criação da conta.
+- Testes de PostgreSQL via PGlite executam as duas migrações e verificam RLS para administrador, visitante e usuário comum; rascunhos; Storage; validações de preço e URLs.
+- Testes do formulário verificam publicação como rascunho por padrão, valores opcionais, preço brasileiro, rejeição de URLs inseguras e validação de arquivos. Testes de interface verificam abas, consulta por marca e login sem configuração.
+- O build inclui guardas que rejeitam chaves secretas/service_role em variáveis públicas. Apenas URL e chave publicável foram salvas em `front/.env.local`, ignorado pelo Git. Nenhuma chave secreta foi usada para consultar ou alterar o projeto remoto.
+- Painel e editor separados em chunks; dependências React, roteamento e Supabase também têm bundles próprios. `/admin` recebe noindex por metatag e cabeçalho da Vercel.
+- Navegador/Computer Use permanece indisponível. Não houve validação visual do painel ou Lighthouse; os testes de DOM e banco não substituem essa inspeção nem o teste de login/upload no Supabase real.
+
 Executada em 25 de outubro de 2026, no Windows com Node.js 24.15.0.
 
 Após a separação em `front/` e `back/`, a instalação e os comandos `npm run build`, `npm run lint` e `npm test` foram executados novamente pela raiz com sucesso. Os 12 testes continuam aprovados. `npm run dev` iniciou o frontend pelo workspace; a página, a entrada React e a logo retornaram HTTP 200. A configuração da Vercel foi ajustada para publicar `front/dist`.

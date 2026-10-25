@@ -41,6 +41,11 @@ const { default: MaterialGuide } = await import(
   "../src/components/sections/MaterialGuide"
 );
 const { default: FAQ } = await import("../src/components/sections/FAQ");
+const { default: Brands } = await import("../src/components/sections/Brands");
+const { default: AdminLogin } = await import(
+  "../src/components/admin/AdminLogin"
+);
+const { MemoryRouter } = await import("react-router-dom");
 const { createRoot } = await import("react-dom/client");
 
 async function render(component: React.ReactNode) {
@@ -164,5 +169,73 @@ test("FAQ abre e fecha respostas com estado acessível", async () => {
   );
   await act(async () => button.click());
   assert.equal(button.getAttribute("aria-expanded"), "false");
+  await view.dispose();
+});
+
+test("as cinco marcas têm imagens e a aba encaminha a seleção ao catálogo", async () => {
+  let selection = "";
+  const view = await render(
+    <Brands
+      onCatalogBrand={(brand) => {
+        selection = brand;
+      }}
+    />,
+  );
+  assert.equal(view.node.querySelectorAll('[role="tab"]').length, 5);
+  for (const name of [
+    "Multfila",
+    "3D Brothers",
+    "Voolt3D",
+    "3D Prime",
+    "ELEGOO",
+  ])
+    assert.ok(view.node.querySelector(`img[alt="${name}"]`));
+  assert.ok(
+    view.node.querySelector('img[src="/images/brands/multfila-photo.webp"]'),
+  );
+  await click(view.node, "Ver no catálogo");
+  assert.equal(selection, "Multfila");
+  const message = new URL(
+    view.node.querySelector<HTMLAnchorElement>(
+      'a[href^="https://wa.me/"]',
+    )!.href,
+  ).searchParams.get("text")!;
+  assert.match(message, /Multfila/);
+  const tab = view.node.querySelector<HTMLButtonElement>('[role="tab"]')!;
+  await act(async () =>
+    tab.dispatchEvent(
+      new browser.KeyboardEvent("keydown", {
+        key: "End",
+        bubbles: true,
+      }) as unknown as KeyboardEvent,
+    ),
+  );
+  assert.equal(
+    view.node.querySelector("#brand-tab-elegoo")!.getAttribute("aria-selected"),
+    "true",
+  );
+  await view.dispose();
+});
+
+test("o painel sem configuração não simula autenticação nem oferece cadastro público", async () => {
+  const view = await render(
+    <MemoryRouter>
+      <AdminLogin />
+    </MemoryRouter>,
+  );
+  assert.match(view.node.textContent || "", /Painel aguardando configuração/);
+  const submit = view.node.querySelector<HTMLButtonElement>(
+    'button[type="submit"]',
+  )!;
+  assert.ok(submit.closest("fieldset")!.disabled);
+  assert.equal(
+    view.node
+      .querySelector('input[autocomplete="username"]')
+      ?.getAttribute("type"),
+    "email",
+  );
+  await click(view.node, "Esqueci minha senha");
+  assert.match(view.node.textContent || "", /Vamos recuperar seu acesso/);
+  assert.doesNotMatch(view.node.textContent || "", /Criar conta/);
   await view.dispose();
 });
