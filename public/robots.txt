@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /
+# O build substitui este arquivo quando VITE_SITE_URL estiver configurado.
