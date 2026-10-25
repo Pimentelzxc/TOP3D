@@ -15,4 +15,5 @@ Os comandos da raiz encaminham para este workspace. Também é possível executa
 - Conteúdo e contatos: `src/data/`.
 - Assets: `public/`.
 - Saída de produção: `dist/` (equivalente a `front/dist/` a partir da raiz).
+- Vercel com **Root Directory = `front`**: `vercel.json` desta pasta define `npm run build`, saída `dist` e fallback SPA. Não use `front/dist` no painel quando a raiz já for `front`.
 - Instruções completas e deploy: [README principal](../README.md).

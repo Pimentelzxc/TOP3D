@@ -50,11 +50,13 @@ A seção de materiais usa fotos reais de aplicações publicadas pela Prusa, ar
 
 1. Envie este projeto para seu repositório Git.
 2. Importe o repositório em **Vercel → Add New → Project**.
-3. Mantenha **Root Directory** na raiz do repositório. Selecione Vite; instalação `npm install`, build `npm run build`, saída **`front/dist`**. O `vercel.json` da raiz já está ajustado.
+3. Configure **Root Directory** como **`front`**. Selecione Vite; instalação `npm install`, build `npm run build`, saída **`dist`**. O `front/vercel.json` contém os comandos e as regras para esse modo de deploy.
 4. Configure as variáveis públicas descritas acima. `VITE_SITE_URL` deve ser a origem final, sem caminho, query ou fragmento.
 5. Faça o deploy. Após mudar domínio ou variáveis, execute novo deploy.
 
-`vercel.json` já contém fallback SPA, cache para assets versionados e cabeçalhos básicos. Nenhum deploy ou conta externa foi criado nesta entrega local.
+`front/vercel.json` contém fallback SPA, cache para assets versionados e cabeçalhos básicos. O `vercel.json` da raiz também é mantido para quem optar por Root Directory vazio: nesse caso, a saída é `front/dist`. Não misture `front/dist` com Root Directory `front`, pois os caminhos de saída são relativos à raiz selecionada.
+
+Se aparecer `STATIC_BUILD_NO_OUT_DIR`, confira Root Directory, Build Command e Output Directory juntos e faça um novo deploy do commit atualizado. Para Root Directory `front`, use `npm run build` e `dist`.
 
 O build com domínio válido gera `front/dist/sitemap.xml`, `front/dist/robots.txt`, canonical, OG absoluto e Schema.org Organization. Sem domínio, a prévia recebe **noindex** e robots bloqueado para evitar indexação prematura; não se inventa uma URL de produção.
 
@@ -72,11 +74,12 @@ front/
   public/images/          Assets locais otimizados
   .env.example            Modelo de configuração pública
   package.json            Dependências e comandos do frontend
+  vercel.json             Deploy quando Root Directory é front
 back/
   README.md               Preparação para a futura API
 package.json              Workspaces e atalhos da raiz
 package-lock.json         Lockfile único
-vercel.json               Deploy de front/dist
+vercel.json               Alternativa de deploy pela raiz do repositório
 ```
 
 As metas Lighthouse do briefing precisam de medição no ambiente final; não são pontuações presumidas. Veja `VALIDATION.md` para os testes executados.

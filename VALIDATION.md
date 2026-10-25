@@ -4,6 +4,8 @@ Executada em 25 de outubro de 2026, no Windows com Node.js 24.15.0.
 
 Após a separação em `front/` e `back/`, a instalação e os comandos `npm run build`, `npm run lint` e `npm test` foram executados novamente pela raiz com sucesso. Os 12 testes continuam aprovados. `npm run dev` iniciou o frontend pelo workspace; a página, a entrada React e a logo retornaram HTTP 200. A configuração da Vercel foi ajustada para publicar `front/dist`.
 
+Correção para o projeto Vercel configurado com Root Directory `front`: adicionado `front/vercel.json` com build `npm run build`, saída `dist`, fallback SPA e cabeçalhos. O build foi executado também diretamente em `front/`, verificando `dist/index.html`. A configuração do painel e o deploy remoto dependem da execução na Vercel; o sucesso local não atesta o sucesso remoto.
+
 ## Verificado
 
 - `npm install`: instalação concluída; auditoria do npm sem vulnerabilidades no momento da instalação.
