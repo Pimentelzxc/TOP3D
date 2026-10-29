@@ -24,6 +24,23 @@ test("preço brasileiro e indisponibilidade são preservados", () => {
   assert.equal(values.price, 99.9);
   assert.equal(values.available, false);
 });
+
+test("acessórios podem ser publicados sem peso ou diâmetro de filamento", () => {
+  const values = validateProductForm(
+    {
+      ...form,
+      name: "Suporte para bobina",
+      description: "Suporte para organizar e utilizar bobinas de filamento.",
+      category: "Acessórios",
+      published: true,
+    },
+    "photo.webp",
+  );
+  assert.equal(values.category, "Acessórios");
+  assert.equal(values.published, true);
+  assert.equal(values.weight, null);
+  assert.equal(values.diameter, null);
+});
 test("formulário rejeita nomes vazios, marcas desconhecidas, preços negativos e URLs de script", () => {
   assert.throws(() =>
     validateProductForm({ ...form, name: " " }, "photo.webp"),

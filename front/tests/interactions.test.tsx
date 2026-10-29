@@ -121,6 +121,34 @@ test("catálogo oculta produtos sem verificação e filtra produtos confirmados"
   products.length = 0;
 });
 
+test("catálogo permite filtrar acessórios publicados e consultar o produto", async () => {
+  const fixture = {
+    id: "accessory-test",
+    name: "Suporte para bobina",
+    category: "Acessórios",
+    brand: "ELEGOO",
+    description: "Suporte para organizar bobinas de filamento.",
+    image: "/test.webp",
+    verified: true,
+    published: true,
+  };
+  products.push(fixture, { ...fixture, id: "filament-test", name: "Filamento de teste", category: "PLA" });
+  const view = await render(<Catalog />);
+  try {
+    await click(view.node, "Acessórios");
+    assert.match(view.node.textContent || "", /Suporte para bobina/);
+    assert.doesNotMatch(view.node.textContent || "", /Filamento de teste/);
+    await click(view.node, "Ver detalhes");
+    const dialog = view.node.querySelector("dialog")!;
+    assert.match(dialog.textContent || "", /CategoriaAcessórios/);
+    const url = new URL(dialog.querySelector<HTMLAnchorElement>('a[href^="https://wa.me/"]')!.href);
+    assert.match(url.searchParams.get("text")!, /Suporte para bobina/);
+  } finally {
+    await view.dispose();
+    products.length = 0;
+  }
+});
+
 test("assistente percorre cinco perguntas e apresenta material com base nas respostas", async () => {
   const view = await render(
     <MaterialGuide active="pla" setActive={() => {}} />,

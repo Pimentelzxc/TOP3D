@@ -136,7 +136,7 @@ export default function ProductEditor({
                   <div>
                     <ImagePlus size={38} />
                     <strong>A primeira impressão conta.</strong>
-                    <span>Adicione uma boa foto do filamento.</span>
+                    <span>Adicione uma boa foto do produto.</span>
                   </div>
                 )}
               </div>
@@ -160,7 +160,7 @@ export default function ProductEditor({
               </p>
               <div className="editor-preview-caption">
                 <span>PRÉVIA DO CATÁLOGO</span>
-                <h3>{form.name || "Nome do filamento"}</h3>
+                <h3>{form.name || "Nome do produto"}</h3>
                 <p>
                   {form.brand} · {form.category}
                   {form.color && ` · ${form.color}`}
@@ -192,7 +192,7 @@ export default function ProductEditor({
                   </select>
                 </label>
                 <label>
-                  Material *
+                  Material / categoria *
                   <select
                     value={form.category}
                     onChange={(e) => update("category", e.target.value)}
@@ -252,7 +252,7 @@ export default function ProductEditor({
                   rows={4}
                   value={form.description}
                   onChange={(e) => update("description", e.target.value)}
-                  placeholder="Conte sobre o material, acabamento e aplicações deste produto."
+                  placeholder="Conte sobre as características e aplicações deste produto."
                 />
                 <span className="field-counter">
                   {form.description.length}/2000

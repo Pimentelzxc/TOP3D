@@ -243,6 +243,41 @@ test("o banco rejeita valores negativos e links de script, mesmo fora do formul�
     /check constraint/,
   );
 });
+test("migração libera acessórios sem alterar produtos existentes ou aceitar categorias desconhecidas", async () => {
+  const before = await db.query("select * from public.top3d_catalog_products where id=$1", [productId]);
+  const migration = await readFile(
+    new URL("../../back/migrations/003_accessories_category.sql", import.meta.url),
+    "utf8",
+  );
+  await db.exec(migration);
+  await db.exec(migration);
+  assert.deepEqual(
+    (await db.query("select * from public.top3d_catalog_products where id=$1", [productId])).rows,
+    before.rows,
+  );
+  const accessory = await asRole("authenticated", admin, (tx) =>
+    tx.query(
+      `insert into public.top3d_catalog_products(name,category,brand,description,image_path,published)
+       values('Suporte para bobina','Acessórios','ELEGOO','Suporte para organizar bobinas de filamento.',$1,true) returning id`,
+      [`${admin}/44444444-4444-4444-8444-444444444444.webp`],
+    ),
+  );
+  const id = accessory.rows[0].id;
+  const visible = await asRole("anon", null, (tx) =>
+    tx.query("select category, weight, diameter from public.top3d_catalog_products where id=$1", [id]),
+  );
+  assert.deepEqual(visible.rows, [{ category: "Acessórios", weight: null, diameter: null }]);
+  await assert.rejects(
+    () => asRole("authenticated", admin, (tx) =>
+      tx.query("update public.top3d_catalog_products set category='Categoria inexistente' where id=$1", [id]),
+    ),
+    /check constraint/,
+  );
+  await asRole("authenticated", admin, (tx) =>
+    tx.query("delete from public.top3d_catalog_products where id=$1", [id]),
+  );
+});
+
 after(async () => {
   await db.close();
 });

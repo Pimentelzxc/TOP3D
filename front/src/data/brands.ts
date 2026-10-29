@@ -100,4 +100,5 @@ export const materialOptions = [
   "PLA Matte",
   "PLA Rainbow",
   "Especial",
+  "Acessórios",
 ];

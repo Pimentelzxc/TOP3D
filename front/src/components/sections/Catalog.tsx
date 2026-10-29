@@ -330,7 +330,8 @@ export default function Catalog({
           <p>{selected.description}</p>
           <dl className="product-specs">
             {Object.entries({
-              Material: selected.category,
+              [selected.category === "Acessórios" ? "Categoria" : "Material"]:
+                selected.category,
               Marca: selected.brand,
               Cor: selected.color,
               Peso: selected.weight,

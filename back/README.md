@@ -6,12 +6,14 @@ O backend usa **Supabase: Postgres + Auth + Storage**. As migrações desta past
 
 1. No Supabase, abra **SQL Editor**, copie o conteúdo de [001_catalog.sql](migrations/001_catalog.sql) e execute. O script cria as tabelas da TOP3D e o bucket de imagens, sem popular o catálogo com produtos fictícios.
 2. Em **Authentication → Users → Add user**, crie a conta **top3d2k26@gmail.com**. Defina a senha no próprio Supabase e confirme o e-mail conforme o fluxo escolhido. Não coloque a senha no código.
-3. No SQL Editor, execute [002_grant_admin.sql](migrations/002_grant_admin.sql). Somente essa conta será autorizada. O script falha de forma explícita se a conta ainda não existir.
+3. No SQL Editor, execute [002_grant_admin.sql](migrations/002_grant_admin.sql). Somente essa conta será autorizada. O script falha de forma explícita se a conta ainda não existir. Depois, execute [003_accessories_category.sql](migrations/003_accessories_category.sql) para liberar a categoria **Acessórios**.
 4. No frontend, configure `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY`. A conexão local já está em `front/.env.local`, arquivo ignorado pelo Git. No deploy, cadastre as mesmas duas variáveis na Vercel e faça um novo build.
 5. Em **Authentication → URL Configuration**, configure o domínio final em Site URL e permita o redirecionamento exato `https://SEU-DOMINIO/admin/recuperar`. Para desenvolvimento, adicione a origem local usada pelo Vite com `/admin/recuperar`. Configure o envio de e-mails do Supabase para que a recuperação funcione.
 6. Acesse **`/admin`**, entre com o e-mail acima e cadastre o primeiro produto. Salve como rascunho ou marque **Publicar no catálogo**. Abra o site em outra sessão para confirmar a publicação.
 
 O painel não oferece cadastro público. Uma conta autenticada comum também não pode administrar produtos: a autorização é feita pelas políticas do banco, não pelo código visual do painel.
+
+Se o catálogo já está configurado, execute apenas [003_accessories_category.sql](migrations/003_accessories_category.sql) no SQL Editor para esta atualização. A migração preserva os produtos cadastrados e as permissões. Depois de atualizar o frontend, selecione **Acessórios** em **Material / categoria** ao adicionar ou editar um produto. Peso e diâmetro continuam opcionais. O filtro Acessórios aparece no catálogo quando há produtos publicados nessa categoria.
 
 ## Estruturas criadas
 
