@@ -63,6 +63,7 @@ export default function Header() {
             <ExternalLink href={company.instagram} className="navbar-instagram">
               <Instagram size={18} />
               <span className="sr-only">Instagram da TOP3D</span>
+              <span className="navbar-instagram-label" aria-hidden="true">Instagram</span>
             </ExternalLink>
             <ContactButton className="header-contact" />
           </div>
@@ -74,6 +75,7 @@ export default function Header() {
             aria-label={open ? "Fechar menu" : "Abrir menu"}
           >
             {open ? <X /> : <Menu />}
+            <span aria-hidden="true">{open ? "Fechar" : "Menu"}</span>
           </button>
         </div>
         <AnimatePresence>

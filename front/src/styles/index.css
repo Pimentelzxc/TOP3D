@@ -277,6 +277,9 @@ select:focus-visible {
   color: var(--accent);
   border-color: #e2b12b70;
 }
+.navbar-instagram-label {
+  display: none;
+}
 .logo {
   display: inline-flex;
   align-items: center;
@@ -1907,6 +1910,9 @@ select {
   }
 }
 @media (max-width: 767px) {
+  :root {
+    --mobile-header-height: 184px;
+  }
   .logo img {
     width: 44px;
     height: 44px;
@@ -1916,10 +1922,27 @@ select {
     height: 100px;
   }
   .site-header .logo {
-    gap: 6px;
+    grid-column: 1 / -1;
+    gap: 16px;
+    min-width: 0;
+  }
+  .site-header .logo > span:last-child {
+    min-width: 0;
+    font-size: clamp(34px, 8vw, 42px);
+    letter-spacing: -1.5px;
+  }
+  .site-header .logo small {
+    margin-top: 8px;
+    font-size: 10px;
+    letter-spacing: 1.1px;
+    line-height: 1.6;
+    text-wrap: balance;
+  }
+  .site-header {
+    background: #11100ef5;
   }
   html {
-    scroll-padding-top: 120px;
+    scroll-padding-top: calc(var(--mobile-header-height) + 16px);
   }
   .container {
     width: calc(100% - 40px);
@@ -1928,8 +1951,35 @@ select {
     padding-block: 65px;
   }
   .header-inner {
-    height: 112px;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 100px 48px;
+    width: calc(100% - 32px);
+    height: var(--mobile-header-height);
+    gap: 12px;
+    padding-block: 12px;
+  }
+  .header-actions {
+    margin-left: 0;
+    min-width: 0;
+  }
+  .navbar-instagram {
+    width: 100%;
+    height: 48px;
+    gap: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 650;
+    color: #f9eddb;
+    background: #ffffff06;
+  }
+  .navbar-instagram svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  .navbar-instagram-label {
+    display: inline;
   }
   .logo > span:last-child {
     font-size: 25px;
@@ -1948,31 +1998,55 @@ select {
   }
   .mobile-toggle {
     display: flex;
-    width: 38px;
-    height: 38px;
-    background: transparent;
+    width: 100%;
+    height: 48px;
+    gap: 10px;
+    border: 1px solid #e2b12b55;
+    border-radius: 10px;
+    background: #e2b12b10;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .mobile-toggle svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
   }
   .mobile-nav {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    background: #10161ef5;
+    max-height: max(0px, calc(100dvh - var(--mobile-header-height) - 2px));
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: #15130ffb;
     border-top: 1px solid var(--line);
     padding-inline: 22px;
   }
   .mobile-nav > a:not(.button) {
-    font-size: 14px;
-    padding: 13px 0;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 0;
     border-bottom: 1px solid var(--line);
   }
   .mobile-nav > .button {
     margin-block: 18px;
-    max-width: 260px;
+    width: 100%;
+    min-height: 54px;
+    flex-shrink: 0;
+    padding: 14px 16px;
+    font-size: 16px;
     background: var(--accent);
     color: #191309;
   }
+  .mobile-nav > .button svg {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
   .hero {
-    padding-top: 112px;
+    padding-top: var(--mobile-header-height);
   }
   .hero-grid {
     grid-template-columns: 1fr;
@@ -2619,14 +2693,6 @@ select {
   }
   .contact-card > img {
     height: 330px;
-  }
-}
-@media (max-width: 359px) {
-  .site-header .logo > span:last-child {
-    font-size: 20px;
-  }
-  .site-header .logo small {
-    letter-spacing: 0.5px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
