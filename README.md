@@ -25,6 +25,7 @@ Validação: `npm run lint` e `npm test`. O build também executa a checagem est
 ## Funcionalidades
 
 - Cabeçalho fixo, seção ativa, navegação mobile, progresso de leitura e voltar ao topo.
+- Minimapa clicável abaixo do cabeçalho, com o endereço da loja e acesso ao Google Maps.
 - Hero com render conceitual e resposta leve ao cursor; respeito a movimento reduzido.
 - Cards educativos, comparativo com abas e assistente de cinco perguntas.
 - Catálogo com pesquisa, filtros de material/marca/cor, ordenação, carrossel com swipe, modal e compartilhamento nativo ou clipboard.
@@ -48,6 +49,14 @@ Leia [RESEARCH.md](RESEARCH.md) antes da publicação comercial. Os contatos e p
 Os CTAs de atendimento e o botão flutuante abrem o WhatsApp da loja com mensagens específicas para especialista, catálogo, opções, material, produto, FAQ, contato e rodapé. O assistente inclui o material sugerido e as cinco respostas na mensagem. O Instagram tem botão separado no navbar, além dos links institucionais. Nenhuma mensagem é enviada automaticamente.
 
 A seção de materiais usa fotos reais de aplicações publicadas pela Prusa, armazenadas localmente em WebP, com créditos e links de origem. Esses exemplos são **educativos**, separados do catálogo comercial, e não representam produtos ou projetos da TOP3D. Consulte `ASSETS.md` para as fontes.
+
+## Google Tag Manager e localização
+
+O contêiner **`GTM-PCNK8V2Z`**, informado pelo gestor de anúncios, está instalado uma única vez em `front/index.html`, no início do `<head>`, com carregamento assíncrono e inicialização de `dataLayer`/`gtag`. Como as rotas compartilham o HTML da SPA, a instalação também está presente ao abrir outras rotas diretamente. O código segue o [formato atual de instalação do Google](https://support.google.com/tagmanager/answer/14847097).
+
+Após o deploy na Vercel, o gestor deve verificar o domínio no Tag Assistant e configurar/publicar suas tags e conversões no GTM. Cliques em WhatsApp podem ser configurados pelo gestor usando os links `https://wa.me/`; a instalação do contêiner por si só não configura conversões do Google Ads. Para medir mudanças de rota sem recarregar a página, o gestor pode configurar os acionadores de histórico no GTM conforme sua estratégia.
+
+O minimapa fica no início da seção principal, logo abaixo do cabeçalho, e abre **Rua São Manoel, 531 — Santa Terezinha, Fazenda Rio Grande/PR**, endereço fornecido pelo responsável. Altere `company.address` em `front/src/data/company.ts` para atualizar mapa, texto e rodapé. `company.mapsUrl` permite usar um link específico do estabelecimento; quando vazio, o botão pesquisa o endereço completo no Google Maps. O mapa usa iframe com carregamento lazy e não exige chave de API no frontend.
 
 ## Deploy na Vercel
 

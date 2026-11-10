@@ -8,10 +8,13 @@ import {
   Sparkles,
 } from "lucide-react";
 import { Reveal } from "../ui/Primitives";
+import { company } from "../../data/company";
+import StoreLocation from "./StoreLocation";
 export default function Hero() {
   const reduced = useReducedMotion();
   return (
     <section id="inicio" className="hero">
+      <StoreLocation address={company.address} mapsUrl={company.mapsUrl} />
       <div className="container hero-grid">
         <div className="hero-copy">
           <Reveal>
